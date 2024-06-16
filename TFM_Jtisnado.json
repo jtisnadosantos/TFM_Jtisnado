@@ -1,0 +1,1439 @@
+[
+    {
+        "id": "5a04ca734d8ab43e",
+        "type": "inject",
+        "z": "698fcba3e1f5644d",
+        "name": "Sensor Glucosa",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "glucosa",
+        "payloadType": "flow",
+        "x": 510,
+        "y": 480,
+        "wires": [
+            [
+                "74e268b2daf82676"
+            ]
+        ]
+    },
+    {
+        "id": "b912ccd9e616c5d0",
+        "type": "inject",
+        "z": "698fcba3e1f5644d",
+        "name": "Sensor Ritmo",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ritmo",
+        "payloadType": "flow",
+        "x": 500,
+        "y": 660,
+        "wires": [
+            [
+                "16431590cb62f6b1"
+            ]
+        ]
+    },
+    {
+        "id": "887db1917ad046f1",
+        "type": "inject",
+        "z": "698fcba3e1f5644d",
+        "name": "Sensor Oxigenacion",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "oxigeno",
+        "payloadType": "flow",
+        "x": 460,
+        "y": 840,
+        "wires": [
+            [
+                "4284938cdb0891ea"
+            ]
+        ]
+    },
+    {
+        "id": "74e268b2daf82676",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Glucosa Buena",
+        "func": "var min = 70;\nvar max = 140;\nmsg.payload = Math.floor(Math.random() * (max - min + 1)) + min;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 400,
+        "wires": [
+            [
+                "016b312f139a5a02",
+                "8b2e8e7cc30301de"
+            ]
+        ]
+    },
+    {
+        "id": "e69c7c70386fd9c1",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Glucosa Intermedia",
+        "func": "var range1_min = 61;\nvar range1_max = 69;\nvar range2_min = 141;\nvar range2_max = 199;\n\n// Genera un valor aleatorio entre 0 y 1\nvar random = Math.random();\n\n// Decide en cuál rango generar el valor\nif (random < 0.5) {\n    // Genera un valor en el primer rango\n    msg.payload = Math.floor(Math.random() * (range1_max - range1_min + 1)) + range1_min;\n} else {\n    // Genera un valor en el segundo rango\n    msg.payload = Math.floor(Math.random() * (range2_max - range2_min + 1)) + range2_min;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d362050eae51b8e7",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Glucosa Mala",
+        "func": "var range1_min = 10;\nvar range1_max = 59;\nvar range2_min = 201;\nvar range2_max = 299;\n\n// Genera un valor aleatorio entre 0 y 1\nvar random = Math.random();\n\n// Decide en cuál rango generar el valor\nif (random < 0.5) {\n    // Genera un valor en el primer rango\n    msg.payload = Math.floor(Math.random() * (range1_max - range1_min + 1)) + range1_min;\n} else {\n    // Genera un valor en el segundo rango\n    msg.payload = Math.floor(Math.random() * (range2_max - range2_min + 1)) + range2_min;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83d9d1a4f41fcdcf",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Ritmo Bueno",
+        "func": "var min = 60;\nvar max = 100;\nmsg.payload = Math.floor(Math.random() * (max - min + 1)) + min;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16431590cb62f6b1",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Ritmo Intermedio",
+        "func": "var range1_min = 41;\nvar range1_max = 59;\nvar range2_min = 101;\nvar range2_max = 149;\n\n// Genera un valor aleatorio entre 0 y 1\nvar random = Math.random();\n\n// Decide en cuál rango generar el valor\nif (random < 0.5) {\n    // Genera un valor en el primer rango\n    msg.payload = Math.floor(Math.random() * (range1_max - range1_min + 1)) + range1_min;\n} else {\n    // Genera un valor en el segundo rango\n    msg.payload = Math.floor(Math.random() * (range2_max - range2_min + 1)) + range2_min;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 660,
+        "wires": [
+            [
+                "56915cb41bd7de99",
+                "1607606a799818f6"
+            ]
+        ]
+    },
+    {
+        "id": "1f99ee19bda0319d",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Ritmo Malo",
+        "func": "var range1_min = 10;\nvar range1_max = 39;\nvar range2_min = 151;\nvar range2_max = 299;\n\n// Genera un valor aleatorio entre 0 y 1\nvar random = Math.random();\n\n// Decide en cuál rango generar el valor\nif (random < 0.5) {\n    // Genera un valor en el primer rango\n    msg.payload = Math.floor(Math.random() * (range1_max - range1_min + 1)) + range1_min;\n} else {\n    // Genera un valor en el segundo rango\n    msg.payload = Math.floor(Math.random() * (range2_max - range2_min + 1)) + range2_min;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fdaaf3bf93e8103d",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Oxigeno Bueno",
+        "func": "var min = 95;\nvar max = 100;\nmsg.payload = Math.floor(Math.random() * (max - min + 1)) + min;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f25f2ead34e6587f",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Oxigeno Intermedio",
+        "func": "var min = 85;\nvar max = 94;\nmsg.payload = Math.floor(Math.random() * (max - min + 1)) + min;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4284938cdb0891ea",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Oxigeno Malo",
+        "func": "var min = 1;\nvar max = 84;\nmsg.payload = Math.floor(Math.random() * (max - min + 1)) + min;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 920,
+        "wires": [
+            [
+                "773c09311677115c",
+                "c6bde5088b51cf90"
+            ]
+        ]
+    },
+    {
+        "id": "56915cb41bd7de99",
+        "type": "ui_valuetrail",
+        "z": "698fcba3e1f5644d",
+        "group": "5a92bc6a75c3f7fe",
+        "order": 3,
+        "width": "5",
+        "height": "4",
+        "name": "",
+        "label": "",
+        "unit": "LPM",
+        "blur": true,
+        "minmax": true,
+        "allowtoggle": true,
+        "showvalue": true,
+        "decimals": 0,
+        "colorLine": "#1aff6a",
+        "colorFromTheme": false,
+        "stroke": 2,
+        "property": "payload",
+        "pointcount": 8,
+        "x": 1060,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "016b312f139a5a02",
+        "type": "ui_chart",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "group": "2d8fad1277ee9401",
+        "order": 2,
+        "width": "5",
+        "height": "4",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "300",
+        "removeOlder": "80",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1030,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "773c09311677115c",
+        "type": "ui_artlessgauge",
+        "z": "698fcba3e1f5644d",
+        "group": "a7f4d8ecb90ec252",
+        "order": 4,
+        "width": "4",
+        "height": "4",
+        "name": "",
+        "icon": "",
+        "label": "",
+        "unit": " mm Hg",
+        "layout": "radial",
+        "decimals": 0,
+        "differential": false,
+        "minmax": true,
+        "colorTrack": "#555555",
+        "style": "",
+        "colorFromTheme": true,
+        "property": "payload",
+        "secondary": "secondary",
+        "inline": false,
+        "animate": true,
+        "sectors": [
+            {
+                "val": 0,
+                "col": "#ff9900",
+                "t": "min",
+                "dot": 5
+            },
+            {
+                "val": 100,
+                "col": "#ff9900",
+                "t": "max",
+                "dot": 5
+            }
+        ],
+        "lineWidth": 3,
+        "bgcolorFromTheme": true,
+        "diffCenter": "",
+        "x": 1060,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8b2e8e7cc30301de",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "glucosa",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 360,
+        "wires": [
+            [
+                "458de7cd6dcdc131"
+            ]
+        ]
+    },
+    {
+        "id": "1607606a799818f6",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ritmo",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1070,
+        "y": 600,
+        "wires": [
+            [
+                "0840802cd76961d2"
+            ]
+        ]
+    },
+    {
+        "id": "c6bde5088b51cf90",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "oxigeno",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 780,
+        "wires": [
+            [
+                "05031a5feca10f05"
+            ]
+        ]
+    },
+    {
+        "id": "458de7cd6dcdc131",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "glucosa",
+                "pt": "msg",
+                "to": "glucosa",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 360,
+        "wires": [
+            [
+                "5d355a172a91ebc3",
+                "functionStoreNodeId"
+            ]
+        ]
+    },
+    {
+        "id": "0840802cd76961d2",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ritmo",
+                "pt": "msg",
+                "to": "ritmo",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 600,
+        "wires": [
+            [
+                "2e17f4df77f1188e",
+                "b86340a2ab601c21"
+            ]
+        ]
+    },
+    {
+        "id": "05031a5feca10f05",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "oxigeno",
+                "pt": "msg",
+                "to": "oxigeno",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 780,
+        "wires": [
+            [
+                "5228932c0a47457d",
+                "ae07a42e271b7e9c"
+            ]
+        ]
+    },
+    {
+        "id": "5d355a172a91ebc3",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 17",
+        "func": "if (msg.glucosa >= 70 && msg.glucosa <= 140) {\n    msg.payload = 0;\n} else if (msg.glucosa > 60 && msg.glucosa < 70 || msg.glucosa > 140 && msg.glucosa < 199) {\n    msg.payload = 1;\n} else {\n    msg.payload = 2;\n}\nmsg.topic = 'valor1';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1570,
+        "y": 360,
+        "wires": [
+            [
+                "70aba12c8820337c",
+                "a747aa0b32ec2cc7",
+                "f62c0ece97e78f97"
+            ]
+        ]
+    },
+    {
+        "id": "2e17f4df77f1188e",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 18",
+        "func": "if (msg.ritmo >= 60 && msg.ritmo <= 100) {\n    msg.payload = 0;\n} else if (msg.ritmo > 40 && msg.ritmo < 60 || msg.ritmo > 100 && msg.ritmo < 150) {\n    msg.payload = 1;\n} else {\n    msg.payload = 2;\n}\nmsg.topic = 'valor2';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1490,
+        "y": 560,
+        "wires": [
+            [
+                "4d9291548aad8b18",
+                "a747aa0b32ec2cc7",
+                "5b651e44eab8e56a"
+            ]
+        ]
+    },
+    {
+        "id": "5228932c0a47457d",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 19",
+        "func": "if (msg.oxigeno >= 95 && msg.oxigeno <= 100) {\n    msg.payload = 0;\n} else if (msg.oxigeno >= 85 && msg.oxigeno <= 94) {\n    msg.payload = 1;\n} else {\n    msg.payload = 2;\n}\nmsg.topic = 'valor3';\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 820,
+        "wires": [
+            [
+                "2e5d793498463405",
+                "a747aa0b32ec2cc7",
+                "2185dfe87138d446"
+            ]
+        ]
+    },
+    {
+        "id": "70aba12c8820337c",
+        "type": "ui_led",
+        "z": "698fcba3e1f5644d",
+        "order": 5,
+        "group": "2d8fad1277ee9401",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "2",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffe32e",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1750,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4d9291548aad8b18",
+        "type": "ui_led",
+        "z": "698fcba3e1f5644d",
+        "order": 5,
+        "group": "5a92bc6a75c3f7fe",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "2",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffe32e",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1670,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2e5d793498463405",
+        "type": "ui_led",
+        "z": "698fcba3e1f5644d",
+        "order": 5,
+        "group": "a7f4d8ecb90ec252",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "2",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffe32e",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 1710,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "133817247b39bb1a",
+        "type": "ui_led",
+        "z": "698fcba3e1f5644d",
+        "order": 5,
+        "group": "b0915a6c12bfb06f",
+        "width": "4",
+        "height": "5",
+        "label": "",
+        "labelPlacement": "right",
+        "labelAlignment": "center",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "2",
+                "valueType": "num"
+            },
+            {
+                "color": "#ffe32e",
+                "value": "1",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "0",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 2170,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "9f7b666b29c1fc24",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 22",
+        "func": "var additionalValue = \"Olvida lo anterior. Actúa como un profesional de la salud, dime el tratamiento de medicamento de control para los siguientes valores de salud: oxigenación =\" + msg.payload.oxigeno + \", Ritmo cardiaco = \" + msg.payload.ritmo + \" y Glucosa = \" + msg.payload.glucosa + \". Ten en cuenta que estos valores son tomados de una telemonitorización a un paciente. El formato de salida debe de ser claro y en un párrafo que no supere de 150 palabras.\";\n\nmsg.payload = {\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [{ \"role\": \"user\", \"content\": additionalValue }],\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2690,
+        "y": 800,
+        "wires": [
+            [
+                "216be8e5e67fb4b8"
+            ]
+        ]
+    },
+    {
+        "id": "216be8e5e67fb4b8",
+        "type": "http request",
+        "z": "698fcba3e1f5644d",
+        "name": "Call API",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/json"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Authorization",
+                "valueType": "other",
+                "valueValue": "Bearer "
+            }
+        ],
+        "x": 2880,
+        "y": 800,
+        "wires": [
+            [
+                "d219e676d5a5d056"
+            ]
+        ]
+    },
+    {
+        "id": "d219e676d5a5d056",
+        "type": "ui_text",
+        "z": "698fcba3e1f5644d",
+        "group": "a90c97106778c3f7",
+        "order": 9,
+        "width": "16",
+        "height": "4",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload.choices[0].message.content}}",
+        "layout": "row-left",
+        "className": "",
+        "style": true,
+        "font": "Arial,Arial,Helvetica,sans-serif",
+        "fontSize": 16,
+        "color": "#ffffff",
+        "x": 3050,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "a747aa0b32ec2cc7",
+        "type": "join",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1790,
+        "y": 600,
+        "wires": [
+            [
+                "0ef3eaf1b66f6729"
+            ]
+        ]
+    },
+    {
+        "id": "2bd0fc5e68b27ed5",
+        "type": "ui_button",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "group": "a90c97106778c3f7",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "label": "Solicitar Recomendación IA",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 2160,
+        "y": 920,
+        "wires": [
+            [
+                "functionSendNodeId"
+            ]
+        ]
+    },
+    {
+        "id": "functionStoreNodeId",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Almacenar valor",
+        "func": "// Guardar el valor en el contexto de flujo\nflow.set('glucosa', msg.glucosa);\nreturn null;  // No enviar mensaje\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2340,
+        "y": 740,
+        "wires": [
+            [
+                "9f7b666b29c1fc24"
+            ]
+        ]
+    },
+    {
+        "id": "functionSendNodeId",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "Enviar valor almacenado",
+        "func": "// Obtener los valores almacenados en el contexto de flujo\nvar valorConstante1 = flow.get('glucosa');\nvar valorConstante2 = flow.get('ritmo');\nvar valorConstante3 = flow.get('oxigeno');\n\n// Añadir los valores constantes al mensaje de salida\nmsg.payload = {\n    glucosa: valorConstante1,\n    ritmo: valorConstante2,\n    oxigeno: valorConstante3\n};\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2450,
+        "y": 980,
+        "wires": [
+            [
+                "9f7b666b29c1fc24"
+            ]
+        ]
+    },
+    {
+        "id": "b86340a2ab601c21",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 31",
+        "func": "// Guardar el valor 2 en el contexto de flujo\nflow.set('ritmo', msg.ritmo);\nreturn null;  // No enviar mensaje",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2330,
+        "y": 800,
+        "wires": [
+            [
+                "9f7b666b29c1fc24"
+            ]
+        ]
+    },
+    {
+        "id": "ae07a42e271b7e9c",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 32",
+        "func": "// Guardar el valor 3 en el contexto de flujo\nflow.set('oxigeno', msg.oxigeno);\nreturn null;  // No enviar mensaje",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2330,
+        "y": 860,
+        "wires": [
+            [
+                "9f7b666b29c1fc24"
+            ]
+        ]
+    },
+    {
+        "id": "0ef3eaf1b66f6729",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 30",
+        "func": "// Obtener los valores de los tres nodos\nvar valor1 = msg.payload.valor1;\nvar valor2 = msg.payload.valor2;\nvar valor3 = msg.payload.valor3;\n\n// Encontrar el valor más alto\nvar valorMaximo = Math.max(valor1, valor2, valor3);\n\n// Asignar el valor más alto a msg.payload\nmsg.payload = valorMaximo;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 600,
+        "wires": [
+            [
+                "133817247b39bb1a"
+            ]
+        ]
+    },
+    {
+        "id": "3dc181638bfd5e07",
+        "type": "inject",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1260,
+        "y": 1180,
+        "wires": [
+            [
+                "1ff665b91d258aea"
+            ]
+        ]
+    },
+    {
+        "id": "1ff665b91d258aea",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 23",
+        "func": "msg.headers = {\n    \"Content-Type\": \"application/x-www-form-urlencoded\"\n};\n\nmsg.payload = {\n    client_id: \"XXX.apps.googleusercontent.com\",\n    client_secret: \"XXX\",\n    redirect_uri: \"http://localhost:1880/auth/callback\",\n    grant_type: \"authorization_code\",\n    code: \"4/XXXX\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 1180,
+        "wires": [
+            [
+                "05019ce3d0964fad"
+            ]
+        ]
+    },
+    {
+        "id": "05019ce3d0964fad",
+        "type": "http request",
+        "z": "698fcba3e1f5644d",
+        "name": "Get Access Token",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://oauth2.googleapis.com/token",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1670,
+        "y": 1180,
+        "wires": [
+            [
+                "4f3ac175858c5630"
+            ]
+        ]
+    },
+    {
+        "id": "4f3ac175858c5630",
+        "type": "debug",
+        "z": "698fcba3e1f5644d",
+        "name": "debug 45",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1900,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "205f959af31a4acb",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 24",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer XXXXXXXXXXXXX\",\n    \"Accept\": \"application/json\"\n};\n\nmsg.url = \"https://sheets.googleapis.com/v4/spreadsheets/XXXXX/values/A1:P15\";\n\n// Pasar el nombre seleccionado\nmsg.selected_patient = msg.payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 1060,
+        "wires": [
+            [
+                "a62ce031c1f08f10"
+            ]
+        ]
+    },
+    {
+        "id": "a62ce031c1f08f10",
+        "type": "http request",
+        "z": "698fcba3e1f5644d",
+        "name": "Get Sheet Data",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1640,
+        "y": 1060,
+        "wires": [
+            [
+                "3284a303362d5b4d"
+            ]
+        ]
+    },
+    {
+        "id": "3284a303362d5b4d",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 25",
+        "func": "var rows = msg.payload.values;\nvar headers = rows[0];  // Asumimos que la primera fila contiene los encabezados\nvar data = [];\n\nfor (var i = 1; i < rows.length; i++) {\n    var row = rows[i];\n    var record = {};\n    for (var j = 0; j < headers.length; j++) {\n        record[headers[j]] = row[j];\n    }\n    data.push(record);\n}\n\n// Filtrar los datos por el nombre seleccionado\nvar filteredData = data.filter(function (item) {\n    return item.Nombre === msg.selected_patient;\n});\n\nmsg.payload = filteredData;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1830,
+        "y": 1060,
+        "wires": [
+            [
+                "78f112e82673de79"
+            ]
+        ]
+    },
+    {
+        "id": "78f112e82673de79",
+        "type": "ui_template",
+        "z": "698fcba3e1f5644d",
+        "group": "7233348f3f7cbe0d",
+        "name": "",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "format": "<div>\n    <p><strong>Nombre:</strong> {{msg.payload[0].Nombre}}</p>\n    <p><strong>Edad:</strong> {{msg.payload[0].Edad}}</p>\n    <p><strong>Género:</strong> {{msg.payload[0].Genero}}</p>\n    <p><strong>Tipo de Sangre:</strong> {{msg.payload[0]['Tipo de Sangre']}}</p>\n    <p><strong>Condición Médica:</strong> {{msg.payload[0]['Condicion Medica']}}</p>\n    <p><strong>Fecha de Admisión:</strong> {{msg.payload[0]['Fecha de Admision']}}</p>\n    <p><strong>Médico:</strong> {{msg.payload[0].Medico}}</p>\n    <p><strong>Hospital:</strong> {{msg.payload[0].Hospital}}</p>\n    <p><strong>Proveedor de Seguro:</strong> {{msg.payload[0]['Proveedor de Seguro']}}</p>\n    <p><strong>Importe de Facturación:</strong> {{msg.payload[0]['Importe de Facturacion']}}</p>\n    <p><strong>Número de Habitación:</strong> {{msg.payload[0]['Número de Habitacion']}}</p>\n    <p><strong>Tipo de Admisión:</strong> {{msg.payload[0]['Tipo de Admision']}}</p>\n    <p><strong>Fecha de Alta:</strong> {{msg.payload[0]['Fecha de Alta']}}</p>\n    <p><strong>Medicación:</strong> {{msg.payload[0].Medicacion}}</p>\n    <p><strong>Resultados de Pruebas:</strong> {{msg.payload[0]['Resultados de Pruebas']}}</p>\n</div>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 2000,
+        "y": 1060,
+        "wires": [
+            [
+                "5319df2fa6396492"
+            ]
+        ]
+    },
+    {
+        "id": "5319df2fa6396492",
+        "type": "ui_text",
+        "z": "698fcba3e1f5644d",
+        "group": "73348f3f7cbe0d",
+        "order": 11,
+        "width": "6",
+        "height": "3",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2150,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "7b5ef09e60044588",
+        "type": "inject",
+        "z": "698fcba3e1f5644d",
+        "name": "Load Options",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 720,
+        "y": 1060,
+        "wires": [
+            [
+                "0539b3e855a16c39"
+            ]
+        ]
+    },
+    {
+        "id": "0539b3e855a16c39",
+        "type": "change",
+        "z": "698fcba3e1f5644d",
+        "name": "Set Dropdown Options",
+        "rules": [
+            {
+                "t": "set",
+                "p": "options",
+                "pt": "msg",
+                "to": "[{\"Juan\":\"Juan Tisnado\"},{\"María\":\"María Gómez\"},{\"Carlos\":\"Carlos Rodríguez\"},{\"Ana\":\"Ana López\"},{\"Luis\":\"Luis Hernández\"},{\"Carmen\":\"Carmen Díaz\"},{\"Jorge\":\"Jorge Torres\"},{\"Isabel\":\"Isabel Ramírez\"},{\"Pedro\":\"Pedro Cruz\"}]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 1060,
+        "wires": [
+            [
+                "c59fcdab7c6df89a"
+            ]
+        ]
+    },
+    {
+        "id": "c59fcdab7c6df89a",
+        "type": "ui_dropdown",
+        "z": "698fcba3e1f5644d",
+        "name": "Select Patient",
+        "label": "Paciente:",
+        "tooltip": "",
+        "place": "Seleccionar paciente",
+        "group": "7233348f3f7cbe0d",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "selected_patient",
+        "topicType": "str",
+        "className": "",
+        "x": 1240,
+        "y": 1060,
+        "wires": [
+            [
+                "205f959af31a4acb"
+            ]
+        ]
+    },
+    {
+        "id": "704266f6be255140",
+        "type": "mqtt out",
+        "z": "698fcba3e1f5644d",
+        "name": "",
+        "topic": "test/topic",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "mqtt_broker_id",
+        "x": 2420,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2185dfe87138d446",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 28",
+        "func": "if (msg.payload === 2) {\n    msg.payload = \"URGENTE... El nivel de ocigeno es: \" + msg.oxigeno;\n    return msg;\n} \nelse if (msg.payload === 1) {\n    msg.payload = \"Precaución... El nivel de ocigeno es: \" + msg.oxigeno;\n    return msg;\n}\nelse {\n    return null; // No envía ningún mensaje si la condición no se cumple\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1930,
+        "y": 800,
+        "wires": [
+            [
+                "704266f6be255140"
+            ]
+        ]
+    },
+    {
+        "id": "5b651e44eab8e56a",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 27",
+        "func": "if (msg.payload === 2) {\n    msg.payload = \"URGENTE... El nivel de ritmo cardiaco es: \" + msg.ritmo;\n    return msg;\n} \nelse if (msg.payload === 1) {\n    msg.payload = \"Precaución... El nivel de ritmo cardiaco es: \" + msg.ritmo;\n    return msg;\n}\nelse {\n    return null; // No envía ningún mensaje si la condición no se cumple\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 520,
+        "wires": [
+            [
+                "704266f6be255140"
+            ]
+        ]
+    },
+    {
+        "id": "f62c0ece97e78f97",
+        "type": "function",
+        "z": "698fcba3e1f5644d",
+        "name": "function 26",
+        "func": "if (msg.payload === 2) {\n    msg.payload = \"URGENTE... El nivel de glucosa es: \" + msg.glucosa;\n    return msg;\n\n} \nelse if (msg.payload === 1) {\n    msg.payload = \"Precaución... El nivel de glucosa es: \" + msg.glucosa;\n    return msg;\n}\nelse {\n    return null; // No envía ningún mensaje si la condición no se cumple\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1970,
+        "y": 400,
+        "wires": [
+            [
+                "704266f6be255140"
+            ]
+        ]
+    },
+    {
+        "id": "5a92bc6a75c3f7fe",
+        "type": "ui_group",
+        "name": "Ritmo Cardiaco",
+        "tab": "ui-tab-id",
+        "order": 3,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2d8fad1277ee9401",
+        "type": "ui_group",
+        "name": "Glucosa",
+        "tab": "ui-tab-id",
+        "order": 2,
+        "disp": true,
+        "width": "5",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a7f4d8ecb90ec252",
+        "type": "ui_group",
+        "name": "Oxigenacion",
+        "tab": "ui-tab-id",
+        "order": 4,
+        "disp": true,
+        "width": "4",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b0915a6c12bfb06f",
+        "type": "ui_group",
+        "name": "Alerta",
+        "tab": "ui-tab-id",
+        "order": 5,
+        "disp": true,
+        "width": "4",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a90c97106778c3f7",
+        "type": "ui_group",
+        "name": "Sugerencia IA",
+        "tab": "ui-tab-id",
+        "order": 6,
+        "disp": true,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7233348f3f7cbe0d",
+        "type": "ui_group",
+        "name": "Datos Paciente",
+        "tab": "ui-tab-id",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "mqtt_broker_id",
+        "type": "mqtt-broker",
+        "name": "Local MQTT Broker",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "compatmode": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ui-tab-id",
+        "type": "ui_tab",
+        "name": "Dashboard Telemonitorización",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
